@@ -10,7 +10,6 @@ import { KeepLast } from "@web/core/utils/concurrency";
 import { _t } from "@web/core/l10n/translation";
 import { CharField, charField } from "@web/views/fields/char/char_field";
 import { useInputField } from "@web/views/fields/input_field_hook";
-import { useMapAutocomplete } from "./autocomplete_hook";
 const NOMINATIM_SERVICE_URL = "https://nominatim.openstreetmap.org/search?format=json&q=";
 
 export class MapAutoComplete extends CharField {
@@ -27,9 +26,9 @@ export class MapAutoComplete extends CharField {
             suggestions: [],
             isLoading: false,
             open: false,
+            is_auto_complete: true,
         });
         this.rpc = useService("rpc");
-        this.useMapAutocomplete = useMapAutocomplete();
         
         // Bind methods.
         // this.onInput = this.onInput.bind(this);
@@ -118,9 +117,8 @@ export class MapAutoComplete extends CharField {
     }
     
     onSelect(option) {
-        // console.log(option);
         this.state.inputValue = option.label;
-        // Optionally update the record or other fields here.
+   
     }
 }
 

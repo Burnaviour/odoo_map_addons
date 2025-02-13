@@ -2,14 +2,14 @@
 <templates xml:space="preserve">
     <t t-name="map_autocomplete.MapAutoComplete" t-inherit="web.CharField">
         <xpath expr="//t[@t-else='']" position="before">
-           <t t-elif="props.record.resModel == 'cheat.basic'">
+           <t t-elif="this.state.is_auto_complete">
+              <t t-log="this.state.is_auto_complete"/>
                 <AutoComplete
                 value="state.inputValue"
                 sources="sources"
                 onSelect.bind="onSelect"
                 placeholder="props.placeholder || ''"
                 input="inputRef"
-
             />
         
             </t>
