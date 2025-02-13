@@ -117,8 +117,8 @@ export class MapAutoComplete extends CharField {
     }
     
     onSelect(option) {
+        // console.log("Selected option:", option);
         this.state.inputValue = option.label;
-   
     }
 }
 
