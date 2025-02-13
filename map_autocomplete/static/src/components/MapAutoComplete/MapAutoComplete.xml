@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="map_autocomplete.MapAutoComplete" t-inherit="web.CharField">
+        <xpath expr="//t[@t-else='']" position="before">
+           <t t-elif="props.record.resModel == 'cheat.basic'">
+                <AutoComplete
+                value="state.inputValue"
+                sources="sources"
+                onSelect.bind="onSelect"
+                placeholder="props.placeholder || ''"
+                input="inputRef"
+
+            />
+        
+            </t>
+        
+        </xpath>
+    </t>
+    <t t-name="map_autocomplete.AutoCompleteItem" owl="1">
+        <img t-att-src="'/map_autocomplete/static/img/marker.svg'" width="23px" height="32px" onerror="this.src='/base/static/img/company_image.png'" alt="Placeholder"/>
+        <div class="osm-suggestion-item">
+            <div class="fw-bold" t-esc="option.item.display_name.split(',')[0]"/>
+            <small class="text-muted" t-esc="option.item.display_name"/>
+        </div>
+    </t>
+
+
+</templates>
